@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Resmi KB RAUDHATUL JANNAH</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Google Fonts: Nunito & Inter for friendly, readable PAUD aesthetics -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome for crisp icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Nunito', 'sans-serif'],
+                    },
+                    colors: {
+                        sunshine: '#FBBF24',
+                        skykid: '#38BDF8',
+                        leaf: '#34D399',
+                        coral: '#FB7185',
+                        warmbg: '#FFFBEB',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom smooth transitions and decorative patterns */
+        body {
+            background-color: #FFFDF7;
+            color: #1E293B;
+            overflow-x: hidden;
+        }
+        .font-display {
+            font-family: 'Nunito', sans-serif;
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.35s ease-in-out;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .polka-bg {
+            background-image: radial-gradient(#FDE68A 2px, transparent 2px);
+            background-size: 24px 24px;
+        }
+        /* Hide scrollbar for horizontal nav on mobile */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Top Info Bar -->
+    <div class="bg-emerald-600 text-white text-xs sm:text-sm py-2 px-4">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center gap-4">
+                <span><i class="fas fa-id-card mr-1.5 text-amber-300"></i>NPSN: <strong>69877060</strong></span>
+                <span class="hidden md:inline"><i class="fas fa-map-marker-alt mr-1.5 text-amber-300"></i>Jl. 28, Desa Perintis, Kec. Rimbo Bujang, Kab. Tebo, Jambi</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="bg-amber-400 text-slate-900 font-bold px-2.5 py-0.5 rounded-full text-xs">PPDB 2027/2028 Dibuka!</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b-2 border-amber-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-3">
+                <!-- Logo & Brand -->
+                <div onclick="switchTab('beranda')" class="flex items-center gap-3 cursor-pointer group">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+                        <i class="fas fa-sun text-2xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 block">PAUD CERIA</span>
+                        <h1 class="font-display font-black text-lg sm:text-xl text-slate-800 leading-tight">KB RAUDHATUL JANNAH</h1>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="lg:hidden p-2.5 rounded-xl bg-amber-100 text-amber-800 hover:bg-amber-200 transition">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+
+                <!-- Desktop Navigation (8 Menus) -->
+                <nav class="hidden lg:flex items-center gap-1">
+                    <button onclick="switchTab('beranda')" data-tab="beranda" class="nav-btn active px-3 py-2 rounded-xl font-display font-bold text-sm transition bg-amber-400 text-slate-900 shadow-sm">Beranda</button>
+                    <button onclick="switchTab('profil')" data-tab="profil" class="nav-btn px-3 py-2 rounded-xl font-display font-bold text-sm text-slate-600 hover:bg-amber-50 hover:text-amber-700 transition">Profil</button>
+                    <button onclick="switchTab('guru')" data-tab="guru" class="nav-btn px-3 py-2 rounded-xl font-display font-bold text-sm text-slate-600 hover:bg-amber-50 hover:text-amber-700 transition">Guru & Staf</button>
+                    <button onclick="switchTab('program')" data-tab="program" class="nav-btn px-3 py-2 rounded-xl font-display font-bold text-sm text-slate-600 hover:bg-amber-50 hover:text-amber-700 transition">Program</button>
+                    <button onclick="switchTab('sarana')" data-tab="sarana" class="nav-btn px-3 py-2 rounded-xl font-display font-bold text-sm text-slate-600 hover:bg-amber-50 hover:text-amber-700 transition">Sarana</button>
+                    <button onclick="switchTab('galeri')" data-tab="galeri" class="nav-btn px-3 py-2 rounded-xl font-display font-bold text-sm text-slate-600 hover:bg-amber-50 hover:text-amber-700 transition">Galeri</button>
+                    <button onclick="switchTab('ppdb')" data-tab="ppdb" class="nav-btn px-3 py-2 rounded-xl font-display font-bold text-sm text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 transition">PPDB</button>
+                    <button onclick="switchTab('kontak')" data-tab="kontak" class="nav-btn px-3 py-2 rounded-xl font-display font-bold text-sm text-slate-600 hover:bg-amber-50 hover:text-amber-700 transition">Kontak</button>
+                </nav>
+            </div>
+
+            <!-- Mobile Dropdown Navigation -->
+            <div id="mobile-menu" class="hidden lg:hidden pb-4 pt-2 border-t border-amber-100">
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    <button onclick="switchTab('beranda'); toggleMobileMenu()" data-tab="beranda" class="nav-btn-mobile text-left px-3 py-2.5 rounded-xl font-display font-bold text-sm bg-amber-400 text-slate-900">1. Beranda</button>
+                    <button onclick="switchTab('profil'); toggleMobileMenu()" data-tab="profil" class="nav-btn-mobile text-left px-3 py-2.5 rounded-xl font-display font-bold text-sm bg-slate-50 text-slate-700">2. Profil Sekolah</button>
+                    <button onclick="switchTab('guru'); toggleMobileMenu()" data-tab="guru" class="nav-btn-mobile text-left px-3 py-2.5 rounded-xl font-display font-bold text-sm bg-slate-50 text-slate-700">3. Guru & Tendik</button>
+                    <button onclick="switchTab('program'); toggleMobileMenu()" data-tab="program" class="nav-btn-mobile text-left px-3 py-2.5 rounded-xl font-display font-bold text-sm bg-slate-50 text-slate-700">4. Program Belajar</button>
+                    <button onclick="switchTab('sarana'); toggleMobileMenu()" data-tab="sarana" class="nav-btn-mobile text-left px-3 py-2.5 rounded-xl font-display font-bold text-sm bg-slate-50 text-slate-700">5. Sarana Prasarana</button>
+                    <button onclick="switchTab('galeri'); toggleMobileMenu()" data-tab="galeri" class="nav-btn-mobile text-left px-3 py-2.5 rounded-xl font-display font-bold text-sm bg-slate-50 text-slate-700">6. Galeri Kegiatan</button>
+                    <button onclick="switchTab('ppdb'); toggleMobileMenu()" data-tab="ppdb" class="nav-btn-mobile text-left px-3 py-2.5 rounded-xl font-display font-bold text-sm bg-emerald-100 text-emerald-800">7. Info PPDB</button>
+                    <button onclick="switchTab('kontak'); toggleMobileMenu()" data-tab="kontak" class="nav-btn-mobile text-left px-3 py-2.5 rounded-xl font-display font-bold text-sm bg-slate-50 text-slate-700">8. Kontak Kami</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow">
+
+        <!-- =========================================================
+             1. HALAMAN BERANDA
+        ========================================================== -->
+        <section id="tab-beranda" class="tab-content active">
+            <!-- Hero Section -->
+            <div class="relative bg-gradient-to-br from-sky-100 via-amber-50 to-emerald-100 polka-bg py-12 sm:py-20 px-4 border-b-4 border-amber-300">
+                <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 bg-white/90 px-4 py-1.5 rounded-full shadow-sm border border-amber-200">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <span class="text-xs sm:text-sm font-bold text-emerald-700 tracking-wide">PAUD CERIA • DESA PERINTIS, RIMBO BUJANG</span>
+                        </div>
+                        
+                        <h2 class="font-display font-black text-3xl sm:text-5xl text-slate-800 leading-tight">
+                            Website Resmi <br>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-orange-500 to-emerald-600">KB RAUDHATUL JANNAH</span>
+                        </h2>
+                        
+                        <p class="font-display font-extrabold text-lg sm:text-2xl text-sky-700 bg-white/70 inline-block px-4 py-2 rounded-2xl border border-sky-200">
+                            "Tempat Tumbuh, Bermain, Belajar, dan Berkarya."
+                        </p>
+                        
+                        <p class="text-slate-700 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                            Selamat Datang di PAUD Kami! Mewujudkan anak yang <strong>sehat, cerdas, ceria, mandiri, dan berkarakter</strong>.
+                        </p>
+                        
+                        <div class="pt-2 flex flex-wrap justify-center lg:justify-start gap-4">
+                            <button onclick="switchTab('ppdb')" class="px-7 py-4 rounded-2xl bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-white font-display font-black text-base sm:text-lg shadow-lg shadow-orange-200 transform hover:-translate-y-0.5 transition flex items-center gap-2">
+                                <i class="fas fa-rocket"></i>
+                                AYO BERGABUNG BERSAMA KAMI!
+                            </button>
+                            <button onclick="switchTab('profil')" class="px-6 py-4 rounded-2xl bg-white hover:bg-slate-50 text-slate-700 font-display font-bold text-base border-2 border-slate-200 shadow-sm transition">
+                                Kenali Sekolah Kami
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Hero Illustration Card -->
+                    <div class="lg:col-span-5">
+                        <div class="relative bg-white p-4 rounded-3xl shadow-xl border-4 border-amber-300 rotate-1 hover:rotate-0 transition-transform">
+                            <img src="https://placehold.co/600x420/FDE68A/92400E?text=Anak-Anak+Ceria+KB+Raudhatul+Jannah" alt="Ilustrasi Anak PAUD Ceria" class="w-full h-auto rounded-2xl object-cover">
+                            <div class="mt-4 flex items-center justify-between px-2">
+                                <div>
+                                    <p class="font-display font-extrabold text-slate-800">Lingkungan Ramah Anak</p>
+                                    <p class="text-xs text-slate-500">Bermain Sambil Belajar Penuh Kasih Sayang</p>
+                                </div>
+                                <div class="flex -space-x-2">
+                                    <span class="w-8 h-8 rounded-full bg-amber-400 flex items-center justify-center text-white text-xs font-bold border-2 border-white"><i class="fas fa-star"></i></span>
+                                    <span class="w-8 h-8 rounded-full bg-sky-400 flex items-center justify-center text-white text-xs font-bold border-2 border-white"><i class="fas fa-heart"></i></span>
+                                    <span class="w-8 h-8 rounded-full bg-emerald-400 flex items-center justify-center text-white text-xs font-bold border-2 border-white"><i class="fas fa-smile"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sambutan Resmi Section -->
+            <div class="max-w-5xl mx-auto px-4 py-12 sm:py-16">
+                <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-md border-2 border-emerald-100 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-50 rounded-bl-full -z-0"></div>
+                    <div class="relative z-10 text-center space-y-4">
+                        <span class="inline-block px-4 py-1 rounded-full bg-emerald-100 text-emerald-800 font-display font-bold text-xs uppercase tracking-wider">Kata Sambutan</span>
+                        <h3 class="font-display font-black text-2xl sm:text-3xl text-slate-800">
+                            SELAMAT DATANG DI WEBSITE RESMI KB RAUDHATUL JANNAH
+                        </h3>
+                        <div class="w-20 h-1.5 bg-amber-400 mx-auto rounded-full"></div>
+                        <p class="text-slate-600 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto pt-2">
+                            Selamat datang di website resmi satuan PAUD kami. Kami berkomitmen memberikan layanan pendidikan anak usia dini yang berkualitas melalui kegiatan bermain sambil belajar dalam lingkungan yang aman, nyaman, menyenangkan, dan penuh kasih sayang.
+                        </p>
+                        <p class="text-slate-700 font-medium text-base sm:text-lg leading-relaxed max-w-3xl mx-auto">
+                            Mari bersama-sama mendukung tumbuh kembang anak menjadi generasi yang <strong>sehat, mandiri, kreatif, dan berkarakter</strong>.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 4 Pilar Keunggulan -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
+                    <div class="bg-amber-50 border-2 border-amber-200 rounded-3xl p-6 text-center hover:shadow-md transition">
+                        <div class="w-14 h-14 mx-auto rounded-2xl bg-amber-400 text-white flex items-center justify-center text-2xl mb-4 shadow-sm">
+                            <i class="fas fa-mosque"></i>
+                        </div>
+                        <h4 class="font-display font-extrabold text-lg text-slate-800 mb-1">Berakhlak Mulia</h4>
+                        <p class="text-sm text-slate-600">Pembiasaan doa harian, nilai agama, dan budi pekerti sejak dini.</p>
+                    </div>
+                    <div class="bg-sky-50 border-2 border-sky-200 rounded-3xl p-6 text-center hover:shadow-md transition">
+                        <div class="w-14 h-14 mx-auto rounded-2xl bg-sky-400 text-white flex items-center justify-center text-2xl mb-4 shadow-sm">
+                            <i class="fas fa-shapes"></i>
+                        </div>
+                        <h4 class="font-display font-extrabold text-lg text-slate-800 mb-1">Bermain & Belajar</h4>
+                        <p class="text-sm text-slate-600">Metode pembelajaran aktif yang merangsang rasa ingin tahu anak.</p>
+                    </div>
+                    <div class="bg-emerald-50 border-2 border-emerald-200 rounded-3xl p-6 text-center hover:shadow-md transition">
+                        <div class="w-14 h-14 mx-auto rounded-2xl bg-emerald-400 text-white flex items-center justify-center text-2xl mb-4 shadow-sm">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h4 class="font-display font-extrabold text-lg text-slate-800 mb-1">Kreatif & Mandiri</h4>
+                        <p class="text-sm text-slate-600">Mengasah motorik, seni, literasi, dan kemandirian sesuai usia.</p>
+                    </div>
+                    <div class="bg-rose-50 border-2 border-rose-200 rounded-3xl p-6 text-center hover:shadow-md transition">
+                        <div class="w-14 h-14 mx-auto rounded-2xl bg-rose-400 text-white flex items-center justify-center text-2xl mb-4 shadow-sm">
+                            <i class="fas fa-shield-heart"></i>
+                        </div>
+                        <h4 class="font-display font-extrabold text-lg text-slate-800 mb-1">Aman & Nyaman</h4>
+                        <p class="text-sm text-slate-600">Lingkungan bersih, ramah anak, dan pendidik penuh kasih sayang.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             2. HALAMAN PROFIL SEKOLAH
+        ========================================================== -->
+        <section id="tab-profil" class="tab-content max-w-6xl mx-auto px-4 py-10 sm:py-14">
+            <div class="text-center mb-10">
+                <span class="px-4 py-1 rounded-full bg-sky-100 text-sky-800 font-display font-bold text-xs uppercase">Tentang Lembaga</span>
+                <h2 class="font-display font-black text-3xl sm:text-4xl text-slate-800 mt-2">Profil KB RAUDHATUL JANNAH</h2>
+                <p class="text-slate-600 mt-2">Identitas resmi satuan pendidikan serta arah tujuan pembinaan peserta didik.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8">
+                <!-- Identitas Sekolah -->
+                <div class="lg:col-span-6 bg-white rounded-3xl p-6 sm:p-8 shadow-md border-2 border-sky-100">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-11 h-11 rounded-2xl bg-sky-500 text-white flex items-center justify-center text-xl">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <h3 class="font-display font-extrabold text-xl text-slate-800">Identitas Satuan PAUD</h3>
+                    </div>
+
+                    <div class="divide-y divide-slate-100 text-sm sm:text-base">
+                        <div class="py-3 flex flex-col sm:flex-row sm:justify-between gap-1">
+                            <span class="text-slate-500 font-medium">Nama Lembaga</span>
+                            <span class="font-bold text-slate-800">KB RAUDHATUL JANNAH</span>
+                        </div>
+                        <div class="py-3 flex flex-col sm:flex-row sm:justify-between gap-1">
+                            <span class="text-slate-500 font-medium">NPSN</span>
+                            <span class="font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-lg w-fit">69877060</span>
+                        </div>
+                        <div class="py-3 flex flex-col sm:flex-row sm:justify-between gap-1">
+                            <span class="text-slate-500 font-medium">Bentuk Pendidikan</span>
+                            <span class="font-bold text-slate-800">Kelompok Bermain (KB)</span>
+                        </div>
+                        <div class="py-3 flex flex-col sm:flex-row sm:justify-between gap-1">
+                            <span class="text-slate-500 font-medium">Status Lembaga</span>
+                            <span class="font-bold text-slate-800">Swasta</span>
+                        </div>
+                        <div class="py-3 flex flex-col sm:flex-row sm:justify-between gap-1">
+                            <span class="text-slate-500 font-medium">Akreditasi</span>
+                            <span class="font-bold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-lg w-fit">Terakreditasi C</span>
+                        </div>
+                        <div class="py-3 flex flex-col sm:flex-row sm:justify-between gap-1">
+                            <span class="text-slate-500 font-medium">Tahun Berdiri</span>
+                            <span class="font-semibold text-slate-700 italic">[Isi Tahun Berdiri di Google Sites]</span>
+                        </div>
+                        <div class="py-3 flex flex-col sm:flex-row sm:justify-between gap-1">
+                            <span class="text-slate-500 font-medium">Nama Kepala Sekolah</span>
+                            <span class="font-semibold text-slate-700 italic">[Isi Nama Kepala Sekolah]</span>
+                        </div>
+                        <div class="py-3 flex flex-col sm:flex-row sm:justify-between gap-1">
+                            <span class="text-slate-500 font-medium">Jumlah Guru</span>
+                            <span class="font-semibold text-slate-700 italic">[Isi Jumlah Guru] Pendidik</span>
+                        </div>
+                        <div class="py-3 flex flex-col gap-1">
+                            <span class="text-slate-500 font-medium">Alamat Sekolah</span>
+                            <span class="font-bold text-slate-800">Jl. 28, Desa Perintis, Kec. Rimbo Bujang, Kab. Tebo, Provinsi Jambi, 37553</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visi & Misi -->
+                <div class="lg:col-span-6 space-y-6">
+                    <!-- Kartu Visi -->
+                    <div class="bg-gradient-to-br from-amber-400 to-orange-400 rounded-3xl p-6 sm:p-8 text-white shadow-md">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-11 h-11 rounded-2xl bg-white/20 flex items-center justify-center text-xl">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <h3 class="font-display font-black text-2xl">VISI SEKOLAH</h3>
+                        </div>
+                        <p class="font-display font-bold text-lg sm:text-xl leading-relaxed bg-white/15 p-5 rounded-2xl border border-white/30">
+                            "Terwujudnya anak usia dini yang beriman, sehat, cerdas, kreatif, mandiri, dan berkarakter melalui pembelajaran yang menyenangkan."
+                        </p>
+                    </div>
+
+                    <!-- Kartu Misi -->
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-md border-2 border-emerald-100">
+                        <div class="flex items-center gap-3 mb-5">
+                            <div class="w-11 h-11 rounded-2xl bg-emerald-500 text-white flex items-center justify-center text-xl">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <h3 class="font-display font-extrabold text-xl text-slate-800">MISI SEKOLAH</h3>
+                        </div>
+                        <ul class="space-y-3.5">
+                            <li class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+                                <span class="text-slate-700 font-medium">Menyelenggarakan pembelajaran yang berpusat pada anak.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+                                <span class="text-slate-700 font-medium">Mengembangkan potensi anak sesuai tahap perkembangannya.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+                                <span class="text-slate-700 font-medium">Menanamkan nilai agama dan budi pekerti.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">4</span>
+                                <span class="text-slate-700 font-medium">Membiasakan perilaku hidup bersih dan sehat.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">5</span>
+                                <span class="text-slate-700 font-medium">Menciptakan lingkungan belajar yang aman dan menyenangkan.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             3. HALAMAN GURU & TENAGA KEPENDIDIKAN
+        ========================================================== -->
+        <section id="tab-guru" class="tab-content max-w-6xl mx-auto px-4 py-10 sm:py-14">
+            <div class="text-center mb-10">
+                <span class="px-4 py-1 rounded-full bg-amber-100 text-amber-800 font-display font-bold text-xs uppercase">Pendidik & Pengelola</span>
+                <h2 class="font-display font-black text-3xl sm:text-4xl text-slate-800 mt-2">Guru & Tenaga Kependidikan</h2>
+                <p class="text-slate-600 mt-2 max-w-2xl mx-auto">Pendidik berdedikasi yang siap mendampingi tumbuh kembang buah hati Anda dengan penuh kesabaran dan kasih sayang.</p>
+            </div>
+
+            <!-- Kartu Kepala Sekolah (Highlight) -->
+            <div class="max-w-3xl mx-auto mb-10">
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-md border-2 border-amber-300 flex flex-col sm:flex-row items-center gap-6">
+                    <img src="https://placehold.co/220x220/FBBF24/FFFFFF?text=Foto+Kepala+Sekolah" alt="Kepala Sekolah" class="w-36 h-36 sm:w-44 sm:h-44 rounded-3xl object-cover border-4 border-amber-100 shadow-sm shrink-0">
+                    <div class="text-center sm:text-left space-y-2">
+                        <span class="inline-block px-3 py-1 rounded-full bg-amber-100 text-amber-800 font-display font-bold text-xs">Kepala Sekolah</span>
+                        <h3 class="font-display font-black text-2xl text-slate-800">[Nama Kepala Sekolah, S.Pd.]</h3>
+                        <p class="text-sm font-semibold text-emerald-700"><i class="fas fa-graduation-cap mr-1.5"></i>Kualifikasi: S1 Pendidikan Anak Usia Dini (PAUD)</p>
+                        <div class="pt-2 border-t border-slate-100">
+                            <p class="text-xs font-bold uppercase text-slate-400 mb-1">Tugas & Tanggung Jawab:</p>
+                            <p class="text-sm text-slate-600 leading-relaxed">Memimpin pengelolaan satuan pendidikan, menyusun program kurikulum PAUD, membina tenaga pendidik, serta menjalin kemitraan harmonis dengan orang tua dan masyarakat.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid Guru Kelas -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Guru 1 -->
+                <div class="bg-white rounded-3xl p-6 shadow-sm border-2 border-sky-100 hover:shadow-md transition flex flex-col items-center text-center">
+                    <img src="https://placehold.co/180x180/38BDF8/FFFFFF?text=Foto+Guru+1" alt="Guru Kelas A" class="w-28 h-28 rounded-full object-cover border-4 border-sky-100 mb-4">
+                    <span class="px-3 py-1 rounded-full bg-sky-100 text-sky-800 font-display font-bold text-xs mb-2">Guru Kelas Kelompok A</span>
+                    <h4 class="font-display font-extrabold text-xl text-slate-800">[Nama Guru Kelas 1]</h4>
+                    <p class="text-xs font-semibold text-slate-500 mt-1 mb-3"><i class="fas fa-graduation-cap mr-1 text-sky-500"></i>Kualifikasi: S1 PAUD / Pendidikan</p>
+                    <p class="text-sm text-slate-600 bg-slate-50 p-3.5 rounded-2xl w-full">
+                        <strong>Tugas & Tanggung Jawab:</strong> Merancang kegiatan bermain sambil belajar harian, mendampingi stimulasi motorik dan bahasa anak usia 2–3 tahun, serta mencatat perkembangan harian anak.
+                    </p>
+                </div>
+
+                <!-- Guru 2 -->
+                <div class="bg-white rounded-3xl p-6 shadow-sm border-2 border-emerald-100 hover:shadow-md transition flex flex-col items-center text-center">
+                    <img src="https://placehold.co/180x180/34D399/FFFFFF?text=Foto+Guru+2" alt="Guru Kelas B" class="w-28 h-28 rounded-full object-cover border-4 border-emerald-100 mb-4">
+                    <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 font-display font-bold text-xs mb-2">Guru Kelas Kelompok B</span>
+                    <h4 class="font-display font-extrabold text-xl text-slate-800">[Nama Guru Kelas 2]</h4>
+                    <p class="text-xs font-semibold text-slate-500 mt-1 mb-3"><i class="fas fa-graduation-cap mr-1 text-emerald-500"></i>Kualifikasi: S1 PAUD / Pendidikan</p>
+                    <p class="text-sm text-slate-600 bg-slate-50 p-3.5 rounded-2xl w-full">
+                        <strong>Tugas & Tanggung Jawab:</strong> Membimbing kegiatan pralinguistik, praliterasi, pranumerasi, penguatan karakter, dan kemandirian anak usia 3–4 tahun.
+                    </p>
+                </div>
+
+                <!-- Guru 3 / Tendik -->
+                <div class="bg-white rounded-3xl p-6 shadow-sm border-2 border-rose-100 hover:shadow-md transition flex flex-col items-center text-center">
+                    <img src="https://placehold.co/180x180/FB7185/FFFFFF?text=Foto+Guru+3" alt="Guru Pendamping / Tendik" class="w-28 h-28 rounded-full object-cover border-4 border-rose-100 mb-4">
+                    <span class="px-3 py-1 rounded-full bg-rose-100 text-rose-800 font-display font-bold text-xs mb-2">Guru Pendamping & Administrasi</span>
+                    <h4 class="font-display font-extrabold text-xl text-slate-800">[Nama Guru / Staf 3]</h4>
+                    <p class="text-xs font-semibold text-slate-500 mt-1 mb-3"><i class="fas fa-graduation-cap mr-1 text-rose-500"></i>Kualifikasi: SMA / D3 / S1</p>
+                    <p class="text-sm text-slate-600 bg-slate-50 p-3.5 rounded-2xl w-full">
+                        <strong>Tugas & Tanggung Jawab:</strong> Mendampingi aktivitas bermain luar ruangan, menjaga kebersihan serta keamanan alat permainan edukatif (APE), dan mengelola administrasi sekolah.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             4. HALAMAN PROGRAM PEMBELAJARAN
+        ========================================================== -->
+        <section id="tab-program" class="tab-content max-w-6xl mx-auto px-4 py-10 sm:py-14">
+            <div class="text-center mb-10">
+                <span class="px-4 py-1 rounded-full bg-emerald-100 text-emerald-800 font-display font-bold text-xs uppercase">Kurikulum & Kegiatan</span>
+                <h2 class="font-display font-black text-3xl sm:text-4xl text-slate-800 mt-2">Program Pembelajaran PAUD</h2>
+                <p class="text-slate-600 mt-2 max-w-2xl mx-auto">8 pilar kegiatan harian dan tematik yang dirancang menyenangkan untuk mengoptimalkan seluruh aspek perkembangan anak.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- 1. Pembiasaan Pagi -->
+                <div class="bg-white rounded-3xl p-6 shadow-sm border-2 border-amber-200 hover:-translate-y-1 transition">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-2xl mb-4">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <h3 class="font-display font-extrabold text-lg text-slate-800 mb-2">1. Pembiasaan Pagi</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Penyambutan hangat di gerbang sekolah, senam pagi ceria, pemeriksaan kebersihan kuku/gigi, serta berbaris rapi melatih kedisiplinan.</p>
+                </div>
+
+                <!-- 2. Berdoa Sebelum dan Sesudah Kegiatan -->
+                <div class="bg-white rounded-3xl p-6 shadow-sm border-2 border-emerald-200 hover:-translate-y-1 transition">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl mb-4">
+                        <i class="fas fa-hands-praying"></i>
+                    </div>
+                    <h3 class="font-display font-extrabold text-lg text-slate-800 mb-2">2. Berdoa Sebelum & Sesudah Kegiatan</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Menanamkan nilai keimanan melalui hafalan doa-doa harian, surat pendek, dan pembiasaan mengucap syukur dalam setiap aktivitas.</p>
+                </div>
+
+                <!-- 3. Bermain Sambil Belajar -->
+                <div class="bg-white rounded-3xl p-6 shadow-sm border-2 border-sky-200 hover:-translate-y-1 transition">
+                    <div class="w-12 h-12 rounded-2xl bg-sky-100 text-sky-600 flex items-center justify-center text-2xl mb-4">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h3 class="font-display font-extrabold text-lg text-slate-800 mb-2">3. Bermain Sambil Belajar</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Eksplorasi benda konkret, balok susun, dan permainan peran untuk menumbuhkan rasa ingin tahu tanpa tekanan akademik.</p>
+                </div>
+
+                <!-- 4. Kegiatan Literasi dan Numerasi -->
+                <div class="bg-white rounded-3xl p-6 shadow-sm border-2 border-indigo-200 hover:-translate-y-1 transition">
+                    <div class="w-12 h-12 rounded-2xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-2xl mb-4">
+                        <i class="fas fa-book-open-reader"></i>
+                    </div>
+                    <h3 class="font-display font-extrabold text-lg text-slate-800 mb-2">4. Literasi & Numerasi</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Bercerita interaktif (storytelling), mengenal huruf, kosakata baru, berhitung benda sederhana, serta pengenalan bentuk dan pola.</p>
+                </div>
+
+                <!-- 5. Kegiatan Seni dan Kreativitas -->
+                <div class="bg-white rounded-3xl p-6 shadow-sm border-2 border-rose-200 hover:-translate-y-1 transition">
+                    <div class="w-12 h-12 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center text-2xl mb-4">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="font-display font-extrabold text-lg text-slate-800 mb-2">5. Seni & Kreativitas</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Mewarnai, melukis jari (finger painting), melipat kertas (origami), bernyanyi lagu anak, dan membuat prakarya dari bahan alam.</p>
+                </div>
+
+                <!-- 6. Pengembangan Motorik -->
+                <div class="bg-white rounded-3xl p-6 shadow-sm border-2 border-orange-200 hover:-translate-y-1 transition">
+                    <div class="w-12 h-12 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center text-2xl mb-4">
+                        <i class="fas fa-person-running"></i>
+                    </div>
+                    <h3 class="font-display font-extrabold text-lg text-slate-800 mb-2">6. Pengembangan Motorik</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Melatih motorik kasar (melompat, meniti titian, melempar bola) dan motorik halus (meronce, menggunting, meremas plastisin).</p>
+                </div>
+
+                <!-- 7. Kegiatan Sosial dan Emosional -->
+                <div class="bg-white rounded-3xl p-6 shadow-sm border-2 border-teal-200 hover:-translate-y-1 transition">
+                    <div class="w-12 h-12 rounded-2xl bg-teal-100 text-teal-600 flex items-center justify-center text-2xl mb-4">
+                        <i class="fas fa-people-group"></i>
+                    </div>
+                    <h3 class="font-display font-extrabold text-lg text-slate-800 mb-2">7. Sosial & Emosional</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Belajar antre, berbagi mainan dengan teman, mengenali perasaan diri, serta menumbuhkan rasa percaya diri saat tampil.</p>
+                </div>
+
+                <!-- 8. Projek dan Kegiatan Penguatan Karakter -->
+                <div class="bg-white rounded-3xl p-6 shadow-sm border-2 border-purple-200 hover:-translate-y-1 transition">
+                    <div class="w-12 h-12 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center text-2xl mb-4">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="font-display font-extrabold text-lg text-slate-800 mb-2">8. Projek Penguatan Karakter</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Kegiatan berbasis projek (P5) seperti mencintai lingkungan, budaya daerah Jambi, gotong royong, dan kemandirian diri.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             5. HALAMAN SARANA DAN PRASARANA
+        ========================================================== -->
+        <section id="tab-sarana" class="tab-content max-w-6xl mx-auto px-4 py-10 sm:py-14">
+            <div class="text-center mb-10">
+                <span class="px-4 py-1 rounded-full bg-sky-100 text-sky-800 font-display font-bold text-xs uppercase">Fasilitas Sekolah</span>
+                <h2 class="font-display font-black text-3xl sm:text-4xl text-slate-800 mt-2">Sarana & Prasarana</h2>
+                <p class="text-slate-600 mt-2 max-w-2xl mx-auto">Fasilitas belajar dan bermain yang bersih, aman, dan dirancang khusus sesuai standar ergonomi anak usia dini.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 1. Ruang Kelas -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm border-2 border-slate-100 hover:shadow-md transition">
+                    <img src="https://placehold.co/600x400/BAE6FD/0369A1?text=Ruang+Kelas+Nyaman" alt="Ruang Kelas" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="font-display font-extrabold text-lg text-slate-800">Ruang Kelas</h3>
+                        <p class="text-sm text-slate-600 mt-1">Ruang belajar luas dengan sirkulasi udara segar, pencahayaan alami yang terang, serta dekorasi dinding edukatif penuh warna.</p>
+                    </div>
+                </div>
+
+                <!-- 2. Meja dan Kursi Anak -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm border-2 border-slate-100 hover:shadow-md transition">
+                    <img src="https://placehold.co/600x400/FDE68A/92400E?text=Meja+dan+Kursi+Anak" alt="Meja dan Kursi Anak" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="font-display font-extrabold text-lg text-slate-800">Meja dan Kursi Anak</h3>
+                        <p class="text-sm text-slate-600 mt-1">Perabot meja dan kursi berwarna cerah dengan tinggi yang disesuaikan postur anak serta sudut tumpul demi keamanan.</p>
+                    </div>
+                </div>
+
+                <!-- 3. APE Dalam Ruangan -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm border-2 border-slate-100 hover:shadow-md transition">
+                    <img src="https://placehold.co/600x400/A7F3D0/065F46?text=APE+Dalam+Ruangan" alt="APE Dalam Ruangan" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="font-display font-extrabold text-lg text-slate-800">APE Dalam Ruangan</h3>
+                        <p class="text-sm text-slate-600 mt-1">Alat Permainan Edukatif (balok kayu, puzzle huruf/angka, boneka tangan, alat musik perkusi, dan buku cerita bergambar).</p>
+                    </div>
+                </div>
+
+                <!-- 4. APE Luar Ruangan -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm border-2 border-slate-100 hover:shadow-md transition">
+                    <img src="https://placehold.co/600x400/FECDD3/9F1239?text=APE+Luar+Ruangan" alt="APE Luar Ruangan" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="font-display font-extrabold text-lg text-slate-800">APE Luar Ruangan</h3>
+                        <p class="text-sm text-slate-600 mt-1">Wahana permainan ketangkasan seperti perosotan, ayunan, jungkat-jungkit, dan panjatan yang terawat dan kokoh.</p>
+                    </div>
+                </div>
+
+                <!-- 5. Tempat Bermain -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm border-2 border-slate-100 hover:shadow-md transition">
+                    <img src="https://placehold.co/600x400/DDD6FE/5B21B6?text=Tempat+Bermain+Ceria" alt="Tempat Bermain" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="font-display font-extrabold text-lg text-slate-800">Tempat Bermain</h3>
+                        <p class="text-sm text-slate-600 mt-1">Area bermain terpadu yang aman di bawah pengawasan guru untuk melatih interaksi sosial dan keberanian anak.</p>
+                    </div>
+                </div>
+
+                <!-- 6. Tempat Cuci Tangan -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm border-2 border-slate-100 hover:shadow-md transition">
+                    <img src="https://placehold.co/600x400/99F6E4/115E59?text=Tempat+Cuci+Tangan" alt="Tempat Cuci Tangan" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="font-display font-extrabold text-lg text-slate-800">Tempat Cuci Tangan</h3>
+                        <p class="text-sm text-slate-600 mt-1">Wastafel ramah anak dengan air bersih mengalir dan sabun cuci tangan untuk membiasakan Perilaku Hidup Bersih dan Sehat (PHBS).</p>
+                    </div>
+                </div>
+
+                <!-- 7. Halaman Bermain -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm border-2 border-slate-100 hover:shadow-md transition sm:col-span-2 lg:col-span-3">
+                    <div class="grid md:grid-cols-12 items-center">
+                        <img src="https://placehold.co/800x360/BBF7D0/166534?text=Halaman+Bermain+Luas+%26+Asri" alt="Halaman Bermain" class="w-full h-56 md:h-64 object-cover md:col-span-6">
+                        <div class="p-6 md:col-span-6 space-y-2">
+                            <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 font-display font-bold text-xs">Area Terbuka</span>
+                            <h3 class="font-display font-extrabold text-xl text-slate-800">Halaman Bermain</h3>
+                            <p class="text-sm sm:text-base text-slate-600 leading-relaxed">Halaman sekolah yang luas, bersih, dan berpagar aman sebagai tempat pelaksanaan senam pagi, upacara bendera sederhana, dan permainan kelompok di alam terbuka.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             6. HALAMAN GALERI KEGIATAN
+        ========================================================== -->
+        <section id="tab-galeri" class="tab-content max-w-6xl mx-auto px-4 py-10 sm:py-14">
+            <div class="text-center mb-8">
+                <span class="px-4 py-1 rounded-full bg-rose-100 text-rose-800 font-display font-bold text-xs uppercase">Dokumentasi</span>
+                <h2 class="font-display font-black text-3xl sm:text-4xl text-slate-800 mt-2">Galeri Kegiatan Sekolah</h2>
+                <p class="text-slate-600 mt-2">Momen keceriaan, kreativitas, dan kebersamaan anak-anak KB RAUDHATUL JANNAH.</p>
+            </div>
+
+            <!-- Filter Kategori Galeri -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8">
+                <button onclick="filterGallery('semua')" class="galeri-filter active px-4 py-2 rounded-full font-display font-bold text-xs sm:text-sm bg-amber-400 text-slate-900 shadow-sm transition">Semua Kategori</button>
+                <button onclick="filterGallery('pembelajaran')" class="galeri-filter px-4 py-2 rounded-full font-display font-bold text-xs sm:text-sm bg-white text-slate-600 border border-slate-200 hover:bg-amber-50 transition">Kegiatan Pembelajaran</button>
+                <button onclick="filterGallery('nasional')" class="galeri-filter px-4 py-2 rounded-full font-display font-bold text-xs sm:text-sm bg-white text-slate-600 border border-slate-200 hover:bg-amber-50 transition">Hari Besar Nasional</button>
+                <button onclick="filterGallery('keagamaan')" class="galeri-filter px-4 py-2 rounded-full font-display font-bold text-xs sm:text-sm bg-white text-slate-600 border border-slate-200 hover:bg-amber-50 transition">Kegiatan Keagamaan</button>
+                <button onclick="filterGallery('parenting')" class="galeri-filter px-4 py-2 rounded-full font-display font-bold text-xs sm:text-sm bg-white text-slate-600 border border-slate-200 hover:bg-amber-50 transition">Kegiatan Parenting</button>
+                <button onclick="filterGallery('rekreasi')" class="galeri-filter px-4 py-2 rounded-full font-display font-bold text-xs sm:text-sm bg-white text-slate-600 border border-slate-200 hover:bg-amber-50 transition">Kunjungan & Rekreasi</button>
+                <button onclick="filterGallery('akhirtahun')" class="galeri-filter px-4 py-2 rounded-full font-display font-bold text-xs sm:text-sm bg-white text-slate-600 border border-slate-200 hover:bg-amber-50 transition">Kegiatan Akhir Tahun</button>
+            </div>
+
+            <!-- Grid Foto Galeri -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Item 1: Pembelajaran -->
+                <div class="gallery-item bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-200" data-category="pembelajaran">
+                    <img src="https://placehold.co/600x400/BAE6FD/0369A1?text=Kegiatan+Pembelajaran+Kelas" alt="Kegiatan Pembelajaran" class="w-full h-52 object-cover">
+                    <div class="p-4">
+                        <span class="text-xs font-bold text-sky-600 uppercase">Kegiatan Pembelajaran</span>
+                        <h4 class="font-display font-extrabold text-slate-800 mt-1">Belajar Menyusun Balok & Warna</h4>
+                        <p class="text-xs text-slate-500 mt-1">Melatih konsentrasi dan motorik halus anak melalui permainan edukatif.</p>
+                    </div>
+                </div>
+
+                <!-- Item 2: Hari Besar Nasional -->
+                <div class="gallery-item bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-200" data-category="nasional">
+                    <img src="https://placehold.co/600x400/FECACA/991B1B?text=Peringatan+Hari+Besar+Nasional" alt="Hari Besar Nasional" class="w-full h-52 object-cover">
+                    <div class="p-4">
+                        <span class="text-xs font-bold text-rose-600 uppercase">Peringatan Hari Besar Nasional</span>
+                        <h4 class="font-display font-extrabold text-slate-800 mt-1">Semarak HUT RI & Hari Kartini</h4>
+                        <p class="text-xs text-slate-500 mt-1">Lomba ceria dan pawai pakaian adat untuk menanamkan rasa cinta tanah air.</p>
+                    </div>
+                </div>
+
+                <!-- Item 3: Keagamaan -->
+                <div class="gallery-item bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-200" data-category="keagamaan">
+                    <img src="https://placehold.co/600x400/A7F3D0/065F46?text=Kegiatan+Keagamaan+%26+Manasik" alt="Kegiatan Keagamaan" class="w-full h-52 object-cover">
+                    <div class="p-4">
+                        <span class="text-xs font-bold text-emerald-600 uppercase">Kegiatan Keagamaan</span>
+                        <h4 class="font-display font-extrabold text-slate-800 mt-1">Praktik Ibadah & Peringatan Hari Besar Islam</h4>
+                        <p class="text-xs text-slate-500 mt-1">Mengenalkan tata cara wudhu, shalat berjamaah, dan kisah teladan Nabi.</p>
+                    </div>
+                </div>
+
+                <!-- Item 4: Parenting -->
+                <div class="gallery-item bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-200" data-category="parenting">
+                    <img src="https://placehold.co/600x400/FDE68A/92400E?text=Kegiatan+Parenting+Orang+Tua" alt="Kegiatan Parenting" class="w-full h-52 object-cover">
+                    <div class="p-4">
+                        <span class="text-xs font-bold text-amber-600 uppercase">Kegiatan Parenting</span>
+                        <h4 class="font-display font-extrabold text-slate-800 mt-1">Kelas Parenting & Kemitraan Wali Murid</h4>
+                        <p class="text-xs text-slate-500 mt-1">Sinergi antara guru dan orang tua dalam mendampingi tumbuh kembang anak di rumah.</p>
+                    </div>
+                </div>
+
+                <!-- Item 5: Kunjungan dan Rekreasi -->
+                <div class="gallery-item bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-200" data-category="rekreasi">
+                    <img src="https://placehold.co/600x400/DDD6FE/5B21B6?text=Kunjungan+Edukatif+%26+Rekreasi" alt="Kunjungan dan Rekreasi" class="w-full h-52 object-cover">
+                    <div class="p-4">
+                        <span class="text-xs font-bold text-purple-600 uppercase">Kegiatan Kunjungan & Rekreasi</span>
+                        <h4 class="font-display font-extrabold text-slate-800 mt-1">Outing Class & Wisata Edukasi</h4>
+                        <p class="text-xs text-slate-500 mt-1">Belajar langsung mengenal alam, profesi, dan lingkungan sekitar Rimbo Bujang.</p>
+                    </div>
+                </div>
+
+                <!-- Item 6: Akhir Tahun -->
+                <div class="gallery-item bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-200" data-category="akhirtahun">
+                    <img src="https://placehold.co/600x400/FED7AA/9A3412?text=Pentas+Seni+%26+Akhir+Tahun" alt="Kegiatan Akhir Tahun" class="w-full h-52 object-cover">
+                    <div class="p-4">
+                        <span class="text-xs font-bold text-orange-600 uppercase">Kegiatan Akhir Tahun</span>
+                        <h4 class="font-display font-extrabold text-slate-800 mt-1">Pentas Seni & Pelepasan Peserta Didik</h4>
+                        <p class="text-xs text-slate-500 mt-1">Ajang unjuk bakat menyanyi, menari, dan hafalan doa di akhir tahun pelajaran.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             7. HALAMAN PENERIMAAN PESERTA DIDIK BARU (PPDB)
+        ========================================================== -->
+        <section id="tab-ppdb" class="tab-content max-w-5xl mx-auto px-4 py-10 sm:py-14">
+            <!-- Banner PPDB -->
+            <div class="bg-gradient-to-r from-emerald-500 via-teal-500 to-sky-500 rounded-3xl p-8 sm:p-12 text-white text-center shadow-lg mb-10 relative overflow-hidden">
+                <div class="relative z-10 space-y-4">
+                    <span class="inline-block px-4 py-1.5 rounded-full bg-amber-400 text-slate-900 font-display font-black text-xs sm:text-sm uppercase tracking-wider shadow-sm">
+                        Pendaftaran Dibuka!
+                    </span>
+                    <h2 class="font-display font-black text-3xl sm:text-5xl leading-tight">
+                        PENERIMAAN PESERTA DIDIK BARU
+                    </h2>
+                    <p class="font-display font-extrabold text-xl sm:text-2xl text-amber-200">
+                        Tahun Pelajaran 2027/2028
+                    </p>
+                    <p class="text-base sm:text-lg max-w-2xl mx-auto text-white/95">
+                        Mari bergabung bersama keluarga besar <strong>KB RAUDHATUL JANNAH</strong>. Wujudkan masa kecil buah hati yang ceria, mandiri, cerdas, dan berakhlak mulia!
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-12 gap-8 items-start">
+                <!-- Syarat Pendaftaran -->
+                <div class="md:col-span-7 bg-white rounded-3xl p-6 sm:p-8 shadow-md border-2 border-emerald-100">
+                    <h3 class="font-display font-extrabold text-xl sm:text-2xl text-slate-800 mb-5 flex items-center gap-2.5">
+                        <i class="fas fa-clipboard-check text-emerald-500"></i>
+                        Persyaratan Pendaftaran
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3.5 p-3 rounded-2xl bg-slate-50 border border-slate-100">
+                            <i class="fas fa-check-circle text-emerald-500 text-xl mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-slate-800">Mengisi formulir pendaftaran</p>
+                                <p class="text-xs text-slate-500">Dapat diisi secara online melalui tombol Google Forms atau langsung di sekolah.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3.5 p-3 rounded-2xl bg-slate-50 border border-slate-100">
+                            <i class="fas fa-check-circle text-emerald-500 text-xl mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-slate-800">Fotokopi Akta Kelahiran anak</p>
+                                <p class="text-xs text-slate-500">Sebanyak 2 lembar sebagai bukti usia calon peserta didik.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3.5 p-3 rounded-2xl bg-slate-50 border border-slate-100">
+                            <i class="fas fa-check-circle text-emerald-500 text-xl mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-slate-800">Fotokopi Kartu Keluarga (KK)</p>
+                                <p class="text-xs text-slate-500">Sebanyak 2 lembar yang memuat NIK anak.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3.5 p-3 rounded-2xl bg-slate-50 border border-slate-100">
+                            <i class="fas fa-check-circle text-emerald-500 text-xl mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-slate-800">Pas foto anak</p>
+                                <p class="text-xs text-slate-500">Ukuran 3x4 latar belakang merah/biru sebanyak 4 lembar.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3.5 p-3 rounded-2xl bg-slate-50 border border-slate-100">
+                            <i class="fas fa-check-circle text-emerald-500 text-xl mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-slate-800">Persyaratan lainnya sesuai ketentuan lembaga</p>
+                                <p class="text-xs text-slate-500">Seperti fotokopi KTP orang tua/wali dan buku KIA (jika ada).</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Box Tombol Google Forms -->
+                <div class="md:col-span-5 bg-amber-50 rounded-3xl p-6 sm:p-8 border-2 border-amber-300 text-center space-y-5 shadow-md">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-amber-400 text-white flex items-center justify-center text-3xl shadow-sm">
+                        <i class="fas fa-file-signature"></i>
+                    </div>
+                    <h3 class="font-display font-black text-2xl text-slate-800">Daftar Online Sekarang</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Ayah & Bunda dapat mendaftarkan ananda dengan mudah dari rumah melalui formulir pendaftaran online resmi kami di Google Forms.
+                    </p>
+                    
+                    <button onclick="openPpdbModal()" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-display font-black text-base shadow-lg transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                        <i class="fab fa-google"></i>
+                        Isi Formulir PPDB (Google Forms)
+                    </button>
+
+                    <p class="text-xs text-slate-500 pt-2">
+                        *Di Google Sites nanti, tombol ini tinggal Bapak tautkan ke link Google Form sekolah.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             8. HALAMAN KONTAK KAMI
+        ========================================================== -->
+        <section id="tab-kontak" class="tab-content max-w-6xl mx-auto px-4 py-10 sm:py-14">
+            <div class="text-center mb-10">
+                <span class="px-4 py-1 rounded-full bg-amber-100 text-amber-800 font-display font-bold text-xs uppercase">Hubungi Kami</span>
+                <h2 class="font-display font-black text-3xl sm:text-4xl text-slate-800 mt-2">Kontak & Lokasi Sekolah</h2>
+                <p class="text-slate-600 mt-2">Silakan hubungi kami atau kunjungi langsung sekolah pada jam pelayanan.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8">
+                <!-- Detail Informasi Kontak -->
+                <div class="lg:col-span-5 space-y-4">
+                    <div class="bg-white p-5 rounded-3xl shadow-sm border-2 border-slate-100 flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center text-xl shrink-0">
+                            <i class="fas fa-map-location-dot"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-display font-extrabold text-slate-800">Alamat Lengkap Sekolah</h4>
+                            <p class="text-sm text-slate-600 mt-1">Jl. 28, Desa Perintis, Kec. Rimbo Bujang, Kab. Tebo, Provinsi Jambi, Kode Pos 37553</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-3xl shadow-sm border-2 border-slate-100 flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl shrink-0">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-display font-extrabold text-slate-800">Nomor WhatsApp</h4>
+                            <p class="text-sm text-slate-600 mt-1">+62 812-XXXX-XXXX (Admin / Kepala Sekolah)</p>
+                            <button onclick="showToast('Simulasi: Membuka chat WhatsApp sekolah...')" class="mt-2 inline-flex items-center gap-1.5 text-xs font-bold bg-emerald-500 text-white px-3 py-1.5 rounded-xl hover:bg-emerald-600 transition">
+                                <i class="fab fa-whatsapp"></i> Chat via WhatsApp
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-3xl shadow-sm border-2 border-slate-100 flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-sky-100 text-sky-600 flex items-center justify-center text-xl shrink-0">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-display font-extrabold text-slate-800">Email Sekolah</h4>
+                            <p class="text-sm text-slate-600 mt-1">kbraudhatuljannah.perintis@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-3xl shadow-sm border-2 border-slate-100 flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-xl shrink-0">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-display font-extrabold text-slate-800">Jam Pelayanan Sekolah</h4>
+                            <p class="text-sm text-slate-600 mt-1">Senin – Sabtu : Pukul 07.30 – 12.00 WIB</p>
+                            <p class="text-xs text-slate-400">Hari Minggu & Tanggal Merah Libur</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Peta Lokasi Google Maps -->
+                <div class="lg:col-span-7 bg-white p-4 rounded-3xl shadow-md border-2 border-sky-100 flex flex-col">
+                    <div class="flex items-center justify-between mb-3 px-2">
+                        <h3 class="font-display font-extrabold text-lg text-slate-800"><i class="fas fa-map-pin text-rose-500 mr-2"></i>Peta Lokasi Google Maps</h3>
+                        <span class="text-xs bg-sky-50 text-sky-700 font-semibold px-2.5 py-1 rounded-lg">Desa Perintis, Rimbo Bujang</span>
+                    </div>
+                    <div class="w-full h-80 sm:h-96 rounded-2xl overflow-hidden border border-slate-200 flex-grow">
+                        <iframe 
+                            title="Peta Lokasi KB RAUDHATUL JANNAH"
+                            src="https://www.google.com/maps?q=KB+RAUDHATUL+JANNAH+Desa+Perintis+Rimbo+Bujang+Tebo+Jambi&output=embed" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-300 mt-12 pt-10 pb-8 px-4 border-t-4 border-amber-400">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 pb-8 border-b border-slate-700">
+            <div>
+                <h4 class="font-display font-black text-xl text-white mb-2">KB RAUDHATUL JANNAH</h4>
+                <p class="text-amber-300 font-semibold text-sm mb-3">"Tempat Tumbuh, Bermain, Belajar, dan Berkarya."</p>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Satuan Pendidikan Anak Usia Dini (PAUD) Kelompok Bermain di Desa Perintis, Kec. Rimbo Bujang, Kab. Tebo, Provinsi Jambi. NPSN: 69877060.
+                </p>
+            </div>
+            <div>
+                <h5 class="font-display font-bold text-white mb-3">Navigasi Cepat</h5>
+                <div class="grid grid-cols-2 gap-2 text-sm">
+                    <button onclick="switchTab('beranda')" class="text-left hover:text-amber-300 transition">Beranda</button>
+                    <button onclick="switchTab('sarana')" class="text-left hover:text-amber-300 transition">Sarana Prasarana</button>
+                    <button onclick="switchTab('profil')" class="text-left hover:text-amber-300 transition">Profil Sekolah</button>
+                    <button onclick="switchTab('galeri')" class="text-left hover:text-amber-300 transition">Galeri Kegiatan</button>
+                    <button onclick="switchTab('guru')" class="text-left hover:text-amber-300 transition">Guru & Tendik</button>
+                    <button onclick="switchTab('ppdb')" class="text-left hover:text-amber-300 transition">Info PPDB</button>
+                    <button onclick="switchTab('program')" class="text-left hover:text-amber-300 transition">Program Belajar</button>
+                    <button onclick="switchTab('kontak')" class="text-left hover:text-amber-300 transition">Kontak Kami</button>
+                </div>
+            </div>
+            <div>
+                <h5 class="font-display font-bold text-white mb-3">Alamat & Jam Layanan</h5>
+                <p class="text-sm text-slate-300 mb-2"><i class="fas fa-location-dot text-amber-400 mr-2"></i>Jl. 28, Desa Perintis, Rimbo Bujang, Kab. Tebo, Jambi 37553</p>
+                <p class="text-sm text-slate-300"><i class="fas fa-clock text-emerald-400 mr-2"></i>Senin - Sabtu: 07.30 - 12.00 WIB</p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto pt-6 text-center text-xs text-slate-400">
+            &copy; 2026 Website Resmi KB RAUDHATUL JANNAH • Prototipe Desain untuk Google Sites
+        </div>
+    </footer>
+
+    <!-- Modal Simulasi Formulir Google Forms PPDB -->
+    <div id="ppdb-modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border-t-8 border-emerald-500 animate-[fadeIn_0.25s_ease-out]">
+            <div class="flex justify-between items-center mb-4">
+                <div>
+                    <span class="text-xs font-bold text-emerald-600 uppercase">Simulasi Google Forms</span>
+                    <h3 class="font-display font-black text-xl text-slate-800">Formulir PPDB 2027/2028</h3>
+                </div>
+                <button onclick="closePpdbModal()" class="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form onsubmit="submitPpdbSim(event)" class="space-y-4 text-sm">
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">Nama Lengkap Calon Peserta Didik</label>
+                    <input type="text" required placeholder="Contoh: Muhammad Al-Fatih" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-emerald-500">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">Tempat Lahir</label>
+                        <input type="text" required placeholder="Rimbo Bujang" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-emerald-500">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">Tanggal Lahir</label>
+                        <input type="date" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-emerald-500">
+                    </div>
+                </div>
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">Nama Orang Tua / Wali</label>
+                    <input type="text" required placeholder="Nama Ayah / Ibu" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-emerald-500">
+                </div>
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">Nomor WhatsApp Aktif</label>
+                    <input type="tel" required placeholder="0812xxxxxxxx" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-emerald-500">
+                </div>
+                <div class="pt-2 flex justify-end gap-2">
+                    <button type="button" onclick="closePpdbModal()" class="px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 font-bold text-slate-700">Batal</button>
+                    <button type="submit" class="px-6 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 font-bold text-white shadow-md">Kirim Pendaftaran</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Hidden textarea for reliable clipboard copying inside iFrames -->
+    <textarea id="clipboard-helper" class="sr-only" aria-hidden="true"></textarea>
+
+    <script>
+        let currentTab = 'beranda';
+
+        // Switch between the 8 main pages
+        function switchTab(tabId) {
+            currentTab = tabId;
+
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show selected tab
+            const target = document.getElementById('tab-' + tabId);
+            if (target) {
+                target.classList.add('active');
+            }
+
+            // Update desktop nav styling
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                if (btn.getAttribute('data-tab') === tabId) {
+                    btn.className = 'nav-btn active px-3 py-2 rounded-xl font-display font-bold text-sm transition bg-amber-400 text-slate-900 shadow-sm';
+                } else if (btn.getAttribute('data-tab') === 'ppdb') {
+                    btn.className = 'nav-btn px-3 py-2 rounded-xl font-display font-bold text-sm text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 transition';
+                } else {
+                    btn.className = 'nav-btn px-3 py-2 rounded-xl font-display font-bold text-sm text-slate-600 hover:bg-amber-50 hover:text-amber-700 transition';
+                }
+            });
+
+            // Update mobile nav styling
+            document.querySelectorAll('.nav-btn-mobile').forEach(btn => {
+                if (btn.getAttribute('data-tab') === tabId) {
+                    btn.classList.remove('bg-slate-50', 'text-slate-700', 'bg-emerald-100', 'text-emerald-800');
+                    btn.classList.add('bg-amber-400', 'text-slate-900');
+                } else {
+                    btn.classList.remove('bg-amber-400', 'text-slate-900');
+                    btn.classList.add('bg-slate-50', 'text-slate-700');
+                }
+            });
+
+            // Scroll smoothly to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Toggle mobile navigation drawer
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Filter gallery categories
+        function filterGallery(category) {
+            // Update active button style
+            document.querySelectorAll('.galeri-filter').forEach(btn => {
+                btn.classList.remove('bg-amber-400', 'text-slate-900', 'shadow-sm');
+                btn.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+            });
+            event.target.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+            event.target.classList.add('bg-amber-400', 'text-slate-900', 'shadow-sm');
+
+            // Show/hide gallery items
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                if (category === 'semua' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // PPDB Modal controls
+        function openPpdbModal() {
+            document.getElementById('ppdb-modal').classList.remove('hidden');
+        }
+
+        function closePpdbModal() {
+            document.getElementById('ppdb-modal').classList.add('hidden');
+        }
+
+        function submitPpdbSim(e) {
+            e.preventDefault();
+            closePpdbModal();
+            showToast('Simulasi berhasil! Di Google Sites, data akan masuk ke Google Sheets.');
+        }
+
+        // Copy clean text from active tab for easy pasting into Google Sites
+        function copyCurrentTabText() {
+            const activeSection = document.getElementById('tab-' + currentTab);
+            if (!activeSection) return;
+
+            // Extract clean readable text
+            const rawText = activeSection.innerText
+                .split('\n')
+                .map(line => line.trim())
+                .filter(line => line.length > 0)
+                .join('\n\n');
+
+            const helper = document.getElementById('clipboard-helper');
+            helper.value = rawText;
+            helper.select();
+          
+        }
+
+        // Show non-blocking notification toast
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-msg');
+            toastMsg.textContent = message;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3500);
+        }
+    </script>
+</body>
+</html>
